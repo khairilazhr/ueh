@@ -27,7 +27,7 @@ public class Event implements Serializable {
     @Column(name = "event_name", nullable = false)
     private String eventName;
 
-    @NotNull
+    @Lob
     @Column(name = "event_desc", nullable = false)
     private String eventDesc;
 

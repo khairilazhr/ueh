@@ -26,8 +26,7 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="event-eventDesc">Event Desc</label>
-            <input
-              type="text"
+            <textarea
               class="form-control"
               name="eventDesc"
               id="event-eventDesc"
@@ -35,7 +34,7 @@
               :class="{ valid: !v$.eventDesc.$invalid, invalid: v$.eventDesc.$invalid }"
               v-model="v$.eventDesc.$model"
               required
-            />
+            ></textarea>
             <div v-if="v$.eventDesc.$anyDirty && v$.eventDesc.$invalid">
               <small class="form-text text-danger" v-for="error of v$.eventDesc.$errors" :key="error.$uid">{{ error.$message }}</small>
             </div>

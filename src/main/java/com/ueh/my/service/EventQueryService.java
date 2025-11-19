@@ -74,7 +74,6 @@ public class EventQueryService extends QueryService<Event> {
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), Event_.id),
                 buildStringSpecification(criteria.getEventName(), Event_.eventName),
-                buildStringSpecification(criteria.getEventDesc(), Event_.eventDesc),
                 buildStringSpecification(criteria.getEventOrg(), Event_.eventOrg),
                 buildRangeSpecification(criteria.getEventDate(), Event_.eventDate),
                 buildStringSpecification(criteria.getEventLocation(), Event_.eventLocation),

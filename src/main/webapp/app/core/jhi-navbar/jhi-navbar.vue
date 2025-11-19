@@ -34,6 +34,18 @@
           <entities-menu></entities-menu>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
+        <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
+          <template #button-content>
+            <span class="navbar-dropdown-menu">
+              <font-awesome-icon icon="th-list" />
+              <span class="no-bold">Pages</span>
+            </span>
+          </template>
+          <b-dropdown-item to="/events" active-class="active">
+            <font-awesome-icon icon="calendar-alt" />
+            <span>My Events (org)</span>
+          </b-dropdown-item>
+        </b-nav-item-dropdown>
         <b-nav-item-dropdown
           right
           id="admin-menu"

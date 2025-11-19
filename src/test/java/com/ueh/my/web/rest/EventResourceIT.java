@@ -221,23 +221,6 @@ class EventResourceIT {
 
     @Test
     @Transactional
-    void checkEventDescIsRequired() throws Exception {
-        long databaseSizeBeforeTest = getRepositoryCount();
-        // set the field null
-        event.setEventDesc(null);
-
-        // Create the Event, which fails.
-        EventDTO eventDTO = eventMapper.toDto(event);
-
-        restEventMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(eventDTO)))
-            .andExpect(status().isBadRequest());
-
-        assertSameRepositoryCount(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     void checkEventOrgIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
@@ -385,56 +368,6 @@ class EventResourceIT {
 
         // Get all the eventList where eventName does not contain
         defaultEventFiltering("eventName.doesNotContain=" + UPDATED_EVENT_NAME, "eventName.doesNotContain=" + DEFAULT_EVENT_NAME);
-    }
-
-    @Test
-    @Transactional
-    void getAllEventsByEventDescIsEqualToSomething() throws Exception {
-        // Initialize the database
-        insertedEvent = eventRepository.saveAndFlush(event);
-
-        // Get all the eventList where eventDesc equals to
-        defaultEventFiltering("eventDesc.equals=" + DEFAULT_EVENT_DESC, "eventDesc.equals=" + UPDATED_EVENT_DESC);
-    }
-
-    @Test
-    @Transactional
-    void getAllEventsByEventDescIsInShouldWork() throws Exception {
-        // Initialize the database
-        insertedEvent = eventRepository.saveAndFlush(event);
-
-        // Get all the eventList where eventDesc in
-        defaultEventFiltering("eventDesc.in=" + DEFAULT_EVENT_DESC + "," + UPDATED_EVENT_DESC, "eventDesc.in=" + UPDATED_EVENT_DESC);
-    }
-
-    @Test
-    @Transactional
-    void getAllEventsByEventDescIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        insertedEvent = eventRepository.saveAndFlush(event);
-
-        // Get all the eventList where eventDesc is not null
-        defaultEventFiltering("eventDesc.specified=true", "eventDesc.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllEventsByEventDescContainsSomething() throws Exception {
-        // Initialize the database
-        insertedEvent = eventRepository.saveAndFlush(event);
-
-        // Get all the eventList where eventDesc contains
-        defaultEventFiltering("eventDesc.contains=" + DEFAULT_EVENT_DESC, "eventDesc.contains=" + UPDATED_EVENT_DESC);
-    }
-
-    @Test
-    @Transactional
-    void getAllEventsByEventDescNotContainsSomething() throws Exception {
-        // Initialize the database
-        insertedEvent = eventRepository.saveAndFlush(event);
-
-        // Get all the eventList where eventDesc does not contain
-        defaultEventFiltering("eventDesc.doesNotContain=" + UPDATED_EVENT_DESC, "eventDesc.doesNotContain=" + DEFAULT_EVENT_DESC);
     }
 
     @Test
@@ -1094,13 +1027,11 @@ class EventResourceIT {
 
         partialUpdatedEvent
             .eventName(UPDATED_EVENT_NAME)
-            .eventDate(UPDATED_EVENT_DATE)
             .eventLocation(UPDATED_EVENT_LOCATION)
             .eventPoster(UPDATED_EVENT_POSTER)
             .eventPosterContentType(UPDATED_EVENT_POSTER_CONTENT_TYPE)
-            .enteredDate(UPDATED_ENTERED_DATE)
             .modifiedBy(UPDATED_MODIFIED_BY)
-            .eventStatus(UPDATED_EVENT_STATUS);
+            .modifiedDate(UPDATED_MODIFIED_DATE);
 
         restEventMockMvc
             .perform(

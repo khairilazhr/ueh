@@ -17,7 +17,7 @@
             <column name="event_name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="event_desc" type="varchar(255)">
+            <column name="event_desc" type="${clobType}">
                 <constraints nullable="false" />
             </column>
             <column name="event_org" type="varchar(255)">
@@ -75,7 +75,7 @@
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="event_name" type="string"/>
-            <column name="event_desc" type="string"/>
+            <column name="event_desc" type="clob"/>
             <column name="event_org" type="string"/>
             <column name="event_date" type="date"/>
             <column name="event_location" type="string"/>

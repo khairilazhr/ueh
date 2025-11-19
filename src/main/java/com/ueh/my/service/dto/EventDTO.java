@@ -17,7 +17,7 @@ public class EventDTO implements Serializable {
     @NotNull
     private String eventName;
 
-    @NotNull
+    @Lob
     private String eventDesc;
 
     @NotNull

@@ -138,11 +138,11 @@ describe('Service Tests', () => {
 
       it('should partial update a Event', async () => {
         const patchObject = {
-          eventName: 'BBBBBB',
           eventOrg: 'BBBBBB',
+          eventDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
           eventLocation: 'BBBBBB',
-          modifiedDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
-          eventStatus: 'BBBBBB',
+          enteredDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
+          modifiedBy: 'BBBBBB',
           ...new Event(),
         };
         const returnedFromService = Object.assign(patchObject, elemDefault);

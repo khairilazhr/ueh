@@ -77,7 +77,6 @@ class EventCriteriaTest {
     private static void setAllFilters(EventCriteria eventCriteria) {
         eventCriteria.id();
         eventCriteria.eventName();
-        eventCriteria.eventDesc();
         eventCriteria.eventOrg();
         eventCriteria.eventDate();
         eventCriteria.eventLocation();
@@ -94,7 +93,6 @@ class EventCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId()) &&
                 condition.apply(criteria.getEventName()) &&
-                condition.apply(criteria.getEventDesc()) &&
                 condition.apply(criteria.getEventOrg()) &&
                 condition.apply(criteria.getEventDate()) &&
                 condition.apply(criteria.getEventLocation()) &&
@@ -113,7 +111,6 @@ class EventCriteriaTest {
             criteria ->
                 condition.apply(criteria.getId(), copy.getId()) &&
                 condition.apply(criteria.getEventName(), copy.getEventName()) &&
-                condition.apply(criteria.getEventDesc(), copy.getEventDesc()) &&
                 condition.apply(criteria.getEventOrg(), copy.getEventOrg()) &&
                 condition.apply(criteria.getEventDate(), copy.getEventDate()) &&
                 condition.apply(criteria.getEventLocation(), copy.getEventLocation()) &&

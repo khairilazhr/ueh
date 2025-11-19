@@ -26,8 +26,6 @@ public class EventCriteria implements Serializable, Criteria {
 
     private StringFilter eventName;
 
-    private StringFilter eventDesc;
-
     private StringFilter eventOrg;
 
     private ZonedDateTimeFilter eventDate;
@@ -51,7 +49,6 @@ public class EventCriteria implements Serializable, Criteria {
     public EventCriteria(EventCriteria other) {
         this.id = other.optionalId().map(LongFilter::copy).orElse(null);
         this.eventName = other.optionalEventName().map(StringFilter::copy).orElse(null);
-        this.eventDesc = other.optionalEventDesc().map(StringFilter::copy).orElse(null);
         this.eventOrg = other.optionalEventOrg().map(StringFilter::copy).orElse(null);
         this.eventDate = other.optionalEventDate().map(ZonedDateTimeFilter::copy).orElse(null);
         this.eventLocation = other.optionalEventLocation().map(StringFilter::copy).orElse(null);
@@ -104,25 +101,6 @@ public class EventCriteria implements Serializable, Criteria {
 
     public void setEventName(StringFilter eventName) {
         this.eventName = eventName;
-    }
-
-    public StringFilter getEventDesc() {
-        return eventDesc;
-    }
-
-    public Optional<StringFilter> optionalEventDesc() {
-        return Optional.ofNullable(eventDesc);
-    }
-
-    public StringFilter eventDesc() {
-        if (eventDesc == null) {
-            setEventDesc(new StringFilter());
-        }
-        return eventDesc;
-    }
-
-    public void setEventDesc(StringFilter eventDesc) {
-        this.eventDesc = eventDesc;
     }
 
     public StringFilter getEventOrg() {
@@ -308,7 +286,6 @@ public class EventCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(eventName, that.eventName) &&
-            Objects.equals(eventDesc, that.eventDesc) &&
             Objects.equals(eventOrg, that.eventOrg) &&
             Objects.equals(eventDate, that.eventDate) &&
             Objects.equals(eventLocation, that.eventLocation) &&
@@ -326,7 +303,6 @@ public class EventCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             eventName,
-            eventDesc,
             eventOrg,
             eventDate,
             eventLocation,
@@ -345,7 +321,6 @@ public class EventCriteria implements Serializable, Criteria {
         return "EventCriteria{" +
             optionalId().map(f -> "id=" + f + ", ").orElse("") +
             optionalEventName().map(f -> "eventName=" + f + ", ").orElse("") +
-            optionalEventDesc().map(f -> "eventDesc=" + f + ", ").orElse("") +
             optionalEventOrg().map(f -> "eventOrg=" + f + ", ").orElse("") +
             optionalEventDate().map(f -> "eventDate=" + f + ", ").orElse("") +
             optionalEventLocation().map(f -> "eventLocation=" + f + ", ").orElse("") +

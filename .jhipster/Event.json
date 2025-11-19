@@ -11,7 +11,7 @@
     },
     {
       "fieldName": "eventDesc",
-      "fieldType": "String",
+      "fieldType": "TextBlob",
       "fieldValidateRules": ["required"]
     },
     {
