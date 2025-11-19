@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "ueh",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "vue",
+    "clientTestFrameworks": [],
+    "clientTheme": "none",
+    "creationTimestamp": 1763533452902,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "enableHibernateCache": true,
+    "enableTranslation": false,
+    "entities": [],
+    "feignClient": null,
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "Y2E2OTQyOTNmZmRmYTMxNGEwZjFlMGNkOTAwOGRjMWY2YWI0NzMzN2JiMDQ3YjA5YjBmZDgzYjJhZTI2NDQ1ZDRlMjQ0Yjg3MmM4MjdiOGUyMGY1YzQxOTY5ODIzY2E1NDM3ZDRhNTQ3OWFlY2Q0M2QzNDNkYjMyNzJiMDU0ZjM=",
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "en",
+    "packageName": "com.ueh.my",
+    "prodDatabaseType": "mysql",
+    "reactive": false,
+    "serverPort": null,
+    "serviceDiscoveryType": null,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": true
+  }
+}
