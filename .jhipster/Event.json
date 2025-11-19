@@ -1,0 +1,63 @@
+{
+  "annotations": {
+    "changelogDate": "20251119070735"
+  },
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "eventName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "eventDesc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "eventOrg",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "eventDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "eventLocation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eventPoster",
+      "fieldType": "AnyBlob"
+    },
+    {
+      "fieldName": "enteredBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enteredDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "eventStatus",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Event",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
