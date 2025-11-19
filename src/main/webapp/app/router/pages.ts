@@ -1,13 +1,33 @@
 import { Authority } from '@/shared/security/authority';
 
 // Import your page components
-const EventList = () => import('@/pages/event-list.vue');
+const EventOrgList = () => import('@/pages/event-org-list.vue');
+const EventOrgUpdate = () => import('@/pages/event-org-update.vue');
+const EventOrgDetails = () => import('@/pages/event-org-details.vue');
 
 export default [
   {
-    path: '/events',
-    name: 'EventList',
-    component: EventList,
+    path: '/event-org-list',
+    name: 'EventOrgList',
+    component: EventOrgList,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/event-org-update/new',
+    name: 'EventOrgCreate',
+    component: EventOrgUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/event-org-update/:eventId?/edit',
+    name: 'EventOrgEdit',
+    component: EventOrgUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/event-org-details/:eventId?/View',
+    name: 'EventOrgDetails',
+    component: EventOrgDetails,
     meta: { authorities: [Authority.USER] },
   },
   // Add more pages here

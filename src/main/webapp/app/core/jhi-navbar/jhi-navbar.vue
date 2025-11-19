@@ -41,7 +41,7 @@
               <span class="no-bold">Pages</span>
             </span>
           </template>
-          <b-dropdown-item to="/events" active-class="active">
+          <b-dropdown-item to="/event-org-list" active-class="active">
             <font-awesome-icon icon="calendar-alt" />
             <span>My Events (org)</span>
           </b-dropdown-item>

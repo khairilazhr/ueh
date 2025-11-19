@@ -6,7 +6,7 @@
         <button class="btn btn-info mr-2" @click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh list</span>
         </button>
-        <router-link :to="{ name: 'EventCreate' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'EventOrgCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -23,34 +23,34 @@
     <div class="alert alert-warning" v-if="!isFetching && events && events.length === 0">
       <span>No Events found</span>
     </div>
-    <div class="table-responsive" v-if="events && events.length > 0">
-      <table class="table table-striped" aria-describedby="events">
+    <div class="table" v-if="events && events.length > 0">
+      <table class="table table-bordered" aria-describedby="events">
         <thead>
           <tr>
-            <th scope="row" @click="changeOrder('id')">
+            <!-- <th scope="row" @click="changeOrder('id')">
               <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
-            </th>
+            </th> -->
             <th scope="row" @click="changeOrder('eventName')">
               <span>Event Name</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'eventName'"></jhi-sort-indicator>
             </th>
-            <th scope="row" @click="changeOrder('eventDesc')">
+            <th scope="row" @click="changeOrder('eventDesc')" width="40%">
               <span>Event Desc</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'eventDesc'"></jhi-sort-indicator>
             </th>
-            <th scope="row" @click="changeOrder('eventOrg')">
+            <th scope="row" @click="changeOrder('eventOrg')" width="10%">
               <span>Event Org</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'eventOrg'"></jhi-sort-indicator>
             </th>
-            <th scope="row" @click="changeOrder('eventDate')">
+            <th scope="row" @click="changeOrder('eventDate')" width="10%">
               <span>Event Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'eventDate'"></jhi-sort-indicator>
             </th>
-            <th scope="row" @click="changeOrder('eventLocation')">
+            <th scope="row" @click="changeOrder('eventLocation')" width="10%">
               <span>Event Location</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'eventLocation'"></jhi-sort-indicator>
             </th>
-            <th scope="row" @click="changeOrder('eventPoster')">
+            <!-- <th scope="row" @click="changeOrder('eventPoster')">
               <span>Event Poster</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'eventPoster'"></jhi-sort-indicator>
             </th>
@@ -73,21 +73,21 @@
             <th scope="row" @click="changeOrder('eventStatus')">
               <span>Event Status</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'eventStatus'"></jhi-sort-indicator>
-            </th>
+            </th> -->
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="event in events" :key="event.id" data-cy="entityTable">
-            <td>
+            <!-- <td>
               <router-link :to="{ name: 'EventView', params: { eventId: event.id } }">{{ event.id }}</router-link>
-            </td>
+            </td> -->
             <td>{{ event.eventName }}</td>
             <td>{{ event.eventDesc }}</td>
             <td>{{ event.eventOrg }}</td>
             <td>{{ formatDateShort(event.eventDate) || '' }}</td>
             <td>{{ event.eventLocation }}</td>
-            <td>
+            <!-- <td>
               <a v-if="event.eventPoster" @click="openFile(event.eventPosterContentType, event.eventPoster)">Open</a>
               <span v-if="event.eventPoster">{{ event.eventPosterContentType }}, {{ byteSize(event.eventPoster) }}</span>
             </td>
@@ -95,19 +95,19 @@
             <td>{{ formatDateShort(event.enteredDate) || '' }}</td>
             <td>{{ event.modifiedBy }}</td>
             <td>{{ formatDateShort(event.modifiedDate) || '' }}</td>
-            <td>{{ event.eventStatus }}</td>
-            <td class="text-right">
+            <td>{{ event.eventStatus }}</td> -->
+            <td class="text-right" width="10%">
               <div class="btn-group">
-                <router-link :to="{ name: 'EventView', params: { eventId: event.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'EventOrgDetails', params: { eventId: event.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-sm-inline">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'EventEdit', params: { eventId: event.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'EventOrgEdit', params: { eventId: event.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-sm-inline">Edit</span>
                   </button>
                 </router-link>
                 <b-button
@@ -118,7 +118,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-sm-inline">Delete</span>
                 </b-button>
               </div>
             </td>
@@ -159,4 +159,4 @@
   </div>
 </template>
 
-<script lang="ts" src="./event-list.component.ts"></script>
+<script lang="ts" src="./event-org-list.component.ts"></script>
